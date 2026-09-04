@@ -1,0 +1,4 @@
+plate_text,category,description
+GJ01AB1234,stolen-vehicle,"Reported stolen - representative demo record, not a real case"
+GJ05CD5678,wanted-person-vehicle,"Linked to representative demo FIR#DEMO001"
+GJ18EF9012,blacklisted,"Representative demo blacklist entry"

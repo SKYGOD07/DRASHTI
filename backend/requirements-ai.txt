@@ -1,0 +1,6 @@
+# Heavier AI deps — installed separately so the core API can be set up (Day 1-2)
+# without waiting on these large downloads. Install when starting Day 3 (ANPR pipeline).
+ultralytics==8.2.103
+easyocr==1.7.2
+opencv-python-headless==4.10.0.84
+numpy==1.26.4

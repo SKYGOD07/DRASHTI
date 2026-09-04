@@ -11,6 +11,10 @@ frontend/dev-dist/
 
 # infra / data
 infra/*.log
+infra/hls_out/
+infra/mediamtx/
+auto.crt
+auto.key
 *.mp4
 *.mkv
 

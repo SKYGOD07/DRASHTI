@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head><title>DRASHTI HLS Spike</title></head>
+<body style="background:#111;color:#eee;font-family:monospace">
+  <div id="clock" style="font-size:32px;padding:10px"></div>
+  <video id="v" controls autoplay muted style="width:640px"></video>
+  <div id="status" style="padding:10px"></div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
+  <script>
+    const video = document.getElementById('v');
+    const status = document.getElementById('status');
+    const clock = document.getElementById('clock');
+    setInterval(() => { clock.textContent = 'Browser wall clock: ' + new Date().toISOString().substr(11,12); }, 100);
+
+    const src = 'http://localhost:8123/api/v1/media/spike/stream.m3u8';
+    if (Hls.isSupported()) {
+      const hls = new Hls({ lowLatencyMode: true });
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => status.textContent = 'manifest parsed, playing...');
+      hls.on(Hls.Events.ERROR, (e, data) => status.textContent = 'HLS ERROR: ' + JSON.stringify(data));
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = src; // native HLS (Safari/iOS)
+      status.textContent = 'using native HLS playback (Safari path)';
+    } else {
+      status.textContent = 'HLS not supported in this browser';
+    }
+  </script>
+</body>
+</html>

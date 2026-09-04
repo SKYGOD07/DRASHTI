@@ -17,7 +17,7 @@ Read the docs in `docs/` in this order:
 1. [`docs/01_BLUEPRINT.md`](docs/01_BLUEPRINT.md) — what we're building and why, mapped to the official evaluation checklist
 2. [`docs/02_TECH_STACK.md`](docs/02_TECH_STACK.md) — full stack, with reasoning
 3. [`docs/03_ARCHITECTURE.md`](docs/03_ARCHITECTURE.md) — system architecture & data flow
-4. [`docs/04_API_KEYS_AND_SECRETS.md`](docs/04_API_KEYS_AND_SECRETS.md) — **everything you (Sahil) need to go sign up for / provide**
+4. [`docs/04_API_KEYS_AND_SECRETS.md`](docs/04_API_KEYS_AND_SECRETS.md) — **everything the team needs to go sign up for / provide**
 5. [`docs/05_ROADMAP_7DAY.md`](docs/05_ROADMAP_7DAY.md) — day-by-day build plan to the Sept 10-11 event
 6. [`docs/06_DATA_MODEL.md`](docs/06_DATA_MODEL.md) — DB schema (camera registry, detections, watchlist, alerts)
 7. [`docs/07_API_SPEC.md`](docs/07_API_SPEC.md) — REST/WebSocket contract between frontend and backend
@@ -50,4 +50,12 @@ DRASHTI/
 
 ## Current status
 
-Ground-work / planning phase. No feature code yet — see `docs/05_ROADMAP_7DAY.md` for the build order. **Logic and working functionality first, design polish later**, per your instruction.
+Day 1 in progress. What actually runs right now, verified with real command output (not aspirational):
+
+- **Backend**: FastAPI skeleton boots; `/api/v1/health` and `/api/v1/cameras` serve in-memory sample data (real DB layer replacing this is in progress — see `docs/05_ROADMAP_7DAY.md`).
+- **Frontend**: React + Vite + Tailwind PWA builds cleanly (`npm run build` produces a working service worker); dev server proxies `/api` to the backend.
+- **RTSP → HLS → browser playback (Model 2 core)**: proven working end-to-end using MediaMTX as the RTSP source, ffmpeg transcode to HLS, and FastAPI serving the manifest with verified-correct CORS. Two real findings from this spike (ffmpeg's own RTSP-server mode doesn't work here; hls.js playback needs a re-check outside the current test sandbox) are documented, not hidden, in `docs/SPIKE_HLS_RESULTS.md`.
+- **ANPR pipeline**: harness built (`scripts/spike_anpr.py`) and AI dependencies installed, but **not yet run** — blocked on real test images, tracked honestly in `docs/SPIKE_ANPR_RESULTS.md`. This is the single biggest open risk in the project; treat it as unresolved until that file says otherwise.
+- **Postgres + PostGIS registry layer**: not yet built (next up — replaces the in-memory camera stub).
+
+**Logic and working functionality first, design polish later** — see `docs/05_ROADMAP_7DAY.md` for the day-by-day build order.

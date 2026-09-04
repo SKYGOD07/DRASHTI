@@ -1,0 +1,6 @@
+name,department,camera_type,lat,lon,address,ownership,stream_protocol
+Gandhinagar Sector 18 Junction,Police,anpr-dedicated,23.2156,72.6369,"Sector 18, Gandhinagar",department-owned,rtsp
+Ahmedabad Ring Road - Vastrapur,Municipal Corporation,fixed,23.0395,72.5296,"Vastrapur, Ahmedabad",department-owned,rtsp
+Surat Ring Road - Adajan,Transport,ptz,21.1959,72.7933,"Adajan, Surat",department-owned,onvif
+Vadodara Sayajigunj Circle,Municipal Corporation,fixed,22.3095,73.1869,"Sayajigunj, Vadodara",department-owned,rtsp
+Rajkot Kalawad Road,Police,anpr-dedicated,22.3039,70.8022,"Kalawad Road, Rajkot",department-owned,rtsp

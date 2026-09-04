@@ -1,0 +1,19 @@
+# backend
+backend/.venv/
+backend/.env
+__pycache__/
+*.pyc
+
+# frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dev-dist/
+
+# infra / data
+infra/*.log
+*.mp4
+*.mkv
+
+# os
+.DS_Store
+Thumbs.db

@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     jwt_expire_minutes: int = 480
     cors_origins: str = "http://localhost:5173,http://localhost:4173"
 
+    drashti_demo_mode: bool = True
+
     class Config:
         env_file = ".env"
 
